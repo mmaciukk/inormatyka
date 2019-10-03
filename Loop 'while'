@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+
+    char znak;
+    do{
+    cout<<"Czy chcesz zakonczyc program?"<<endl;
+    cin>>znak;
+    }while(znak!='t');
+
+    int liczba=9;
+    int liczba1;
+    cout<<"podaj liczbe1"<<endl;
+    cin>>liczba1;
+    while(liczba1<9)
+    {
+     cout<<"liczba = "<<liczba1<<endl;
+     liczba1++;
+    }
+    return 0;
+}
