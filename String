@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    string napis;
+    string napis2;
+    string napis3;
+    string napis4;
+    napis="Podaj swoje imie";
+    napis3=" Milo cie widziec";
+
+
+    cout<<napis<<endl;
+    //cin>>napis2;
+    getline(cin,napis2);
+    cout<<"Witaj "<<napis2<<endl;
+    napis4=napis2+" "+napis3;
+    cout<<"Witaj "<<napis4<<endl;
+
+    return 0;
+}
