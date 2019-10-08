@@ -1,0 +1,75 @@
+    
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    /*cout<<"suma liczb podzielnych przez 3 i 5 z przedzialu od 1 do 100000:"<<endl;
+    unsigned int i;
+    int suma_liczb=0;
+
+
+    for(unsigned int i=1; i<=100000; i++)
+    {
+        if((i%3==0)&&(i%5==0))
+            suma_liczb+=i;
+    }
+    cout<<suma_liczb<<endl;
+
+    //pobierz liczbe i przerob na sume cyfr skladajacych sie na te  liczbe
+    int liczba, a, x;
+    int sumacyfr=0;
+    cout<<"podaj liczbe"<<endl;
+    cin>>liczba;
+    while(liczba!=0)
+    {
+        x=liczba%10;
+        sumacyfr+=x;
+        liczba=(liczba-x)/10;
+    }
+    cout<<sumacyfr<<endl;
+    //liczby zaprzyjaznione
+    int a, b;
+    int suma1=0, suma2=0;
+    cout<<"podaj liczbe 1"<<endl;
+    cin>>a;
+    cout<<"podaj liczbe 2"<<endl;
+    cin>>b;
+    for(int i=1;i<=a/2;i++)
+    {
+        if(a%i==0)
+        {
+            suma1+=i;
+        }
+    }
+    for(int i=1;i<=b/2;i++)
+    {
+        if(b%i==0)
+        {
+            suma2+=i;
+        }
+    }
+    if((suma1==b)&&(suma2==a))
+    {
+        cout<<"liczby sa zaprzyjaznione"<<endl;
+    }else
+    {
+        cout<<"nie sa zaprzyjaznione"<<endl;
+    }
+    int odcinek;
+    float a, b;
+    float fi=1.61803;
+    cout<<"podaj dlugosc odcinka"<<endl;
+    cin>>odcinek;
+    //odcinek/a=fi
+    a=odcinek/fi;
+    b=odcinek-a;
+    cout<<"czesc a:"<<endl;
+    cout<<a<<endl;
+    cout<<"czesc b:"<<endl;
+    cout<<b<<endl;
+    cout<<"spr: "<<a/b<<endl;*/
+
+    return 0;
+}
