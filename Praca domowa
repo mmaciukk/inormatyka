@@ -1,0 +1,89 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //liczby dwucyfrowe podzielne przez 6
+
+    /*for(int i=10; i<=99; i++)
+    {
+        if((i%2==0)&&(i%3==0))
+        {
+            cout<<i<<endl;
+        }
+    }*/
+
+    //liczby dwucyfrowe niepodzielne przez 3
+
+    /*for(int i=10; i<=99; i++)
+    {
+        if(i%3!=0)
+        {
+            cout<<i<<endl;
+        }
+    }*/
+
+    //liczby od 300 do 500, ktore sa parzyste i przy dzieleniu przez 7 daja reszte 3
+
+    /*for(int i=300; i<500; i++)
+    {
+        if((i%2==0)&&(i%7==3))
+           {
+               cout<<i<<endl;
+           }
+    }*/
+
+    //obliczanie dla dowolonej liczby
+
+
+    /*float i, cyfra;
+    float liczba, x=0;
+    cout<<"podaj dowolona liczbe naturalna"<<endl;
+    cin>>liczba;
+    for(float i=1; i<=liczba; i++)
+    {
+      cyfra=1/i;
+      cout<<cyfra<<endl;
+      x+=cyfra;
+    }
+    cout<<x<<endl;*/
+
+    //dzielniki dowlonej liczby
+
+    /*int liczba;
+
+    cout<<"podaj dowolna liczbe naturalna"<<endl;
+    cin>>liczba;
+    for(int i=1; i<=liczba/2; i++)
+    {
+        if(liczba%i==0)
+        {
+            cout<<i<<endl;
+        }
+    }
+    cout<<liczba<<endl;*/
+
+    //rok przestepny
+
+    /*int rok;
+    cout<<"podaj dowolony rok"<<endl;
+    cin>>rok;
+    if(rok%4==0)
+    {
+        if((rok%400==0))
+        {
+            cout<<"rok jest przestepny"<<endl;
+        }
+        else if(rok%100==0)
+        {
+            cout<<"rok nie jest przestepny"<<endl;
+        }
+    }
+    else
+    {
+        cout<<"rok nie jest przestepny"<<endl;
+    }*/
+
+    return 0;
+}
