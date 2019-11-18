@@ -1,0 +1,84 @@
+#include <iostream>
+#include <fstream>
+
+
+
+using namespace std;
+
+int main()
+{
+    fstream plik, plik2, plik3;
+    string napis;
+    int liczba;
+    plik.open("pan-tadeusz.txt", ios::in | ios::out);
+    plik2.open("kod.txt", ios::in | ios::out);
+    plik3.open("pan-andrzej.txt", ios::in | ios::out);
+    if(plik.good()&&plik2.good())
+    {
+        cout<<"Plik wczytano"<<endl;
+        cout<<"Podaj wartosc klucza (od -26 do 26)"<<endl;
+        cin>>liczba;
+        if(liczba>=-26&&liczba<=26)
+        {
+            while(!plik.eof())
+            {
+                getline(plik, napis);
+                for(int i=0; i<napis.size(); i++)
+                {
+                    if(napis[i]>=97)
+                    {
+                        napis[i]=((napis[i]-97+liczba)%26)+97;
+                    }
+                    else if(napis[i]>=65&&napis[i]<=90)
+                    {
+                        napis[i]=((napis[i]-65+liczba)%26)+65;
+                    }
+                }
+                plik2<<napis<<endl;
+
+            }
+        }
+        else
+        {
+            cout<<"Musisz podac liczbe z wymaganego przedzialu!"<<endl;
+        }
+        plik2.close();
+        plik.close();
+    }
+    else
+    {
+        cout<<"Plik nie istnieje"<<endl;
+        plik2.close();
+        plik.close();
+    }
+    plik2.open("kod.txt", ios::in | ios::out);
+    if(plik3.good())
+    {
+    while(!plik2.eof())
+            {
+                getline(plik2, napis);
+                for(int i=0; i<napis.size(); i++)
+                {
+                    if(napis[i]>=97&&napis[i]<=122)
+                    {
+                        napis[i]=((napis[i]-97)%26)+97;
+                    }
+                    else if(napis[i]>=65&&napis[i]<=90)
+                    {
+                        napis[i]=(((napis[i]-65)+liczba)%26)+65;
+                    }
+                }
+                plik3<<napis<<endl;
+
+            }
+    }else
+    {
+        cout<<"Plik 3 nie istnieje!"<<endl;
+    }
+    plik3.close();
+
+
+
+
+
+    return 0;
