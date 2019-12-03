@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int odleglosc(int * wsk_x1, int * wsk_x2, int * wsk_y1, int * wsk_y2);
+int main()
+{
+    int x1, x2, y1, y2;
+    int * wsk_x1, * wsk_x2, * wsk_y1, * wsk_y2;
+    cout<<"Podaj kolejno wpolrzedne x i y 1. punktu"<<endl;
+    cin>>x1;
+    cin>>y1;
+    cout<<"Podaj kolejno wpolrzedne x i y 2. punktu"<<endl;
+    cin>>x2;
+    cin>>y2;
+    wsk_x1 = & x1;
+    wsk_x2 = & x2;
+    wsk_y1 = & y1;
+    wsk_y2 = & y2;
+    cout<<odleglosc(wsk_x1 ,wsk_x2 ,wsk_y1 ,wsk_y2)<<endl;
+    return 0;
+}
+int odleglosc(int * wsk_x1, int * wsk_x2, int * wsk_y1, int * wsk_y2)
+{
+    return sqrt(pow( * wsk_x1-* wsk_x2, 2)+pow(* wsk_y1-* wsk_y2,2));
+}
