@@ -1,0 +1,90 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+void make(int t[], int rozm);
+void wypelnij(int t[], int rozm, int up, int down);
+void poka(int t[], int rozm);
+void zmianaP(int t[],int rozm,int zmien);
+void zmianaN(int t[],int rozm,int zmien);
+//-----------------------------------------------------------------------------------------------
+int main()
+{
+    srand(time(NULL));
+    int rozm, up, down, zmien, wybor;
+    cout<<"Podaj rozmiar tablicy"<<endl;
+    cin>>rozm;
+    int * tablica = new int [rozm];
+    cout<<"Podaj gorna granice"<<endl;
+    cin>>up;
+    cout<<"Podaj dolna granice"<<endl;
+    cin>>down;
+    make(tablica, rozm);
+    wypelnij(tablica, rozm, up,down);
+    poka(tablica, rozm);
+    cout<<endl;
+    cout<<"Na jaka cyfre zmienic?"<<endl;
+    cin>>zmien;
+    cout<<"Chcesz zamienic parzyste(1) czy nieparzyste(2)?"<<endl;
+    cin>>wybor;
+    if((wybor==1)||(wybor==2))
+    {
+        if(wybor==1)
+        {
+            zmianaP(tablica, rozm, zmien);
+        }
+        else if(wybor==2)
+        {
+            zmianaN(tablica, rozm, zmien);
+        }
+    }
+    else
+    {
+        cout<<"Musisz wybrac 1 lub 2!"<<endl;
+    }
+    poka(tablica, rozm);
+
+
+    return 0;
+}
+//---------------------------------------------------------------------------------------------
+void make(int t[], int rozm)
+{
+    t = new int [rozm];
+}
+void wypelnij(int t[], int rozm, int up, int down)
+{
+    for(int i=0; i<rozm; i++)
+    {
+        t[i]=rand()%(up-down)+down;
+    }
+}
+void poka(int t[], int rozm)
+{
+    for(int i=0; i<rozm; i++)
+    {
+        cout<<t[i]<<" ";
+    }
+}
+void zmianaP(int t[], int rozm, int zmien)
+{
+    for(int i=0; i<rozm; i++)
+    {
+        if(t[i]%2==0)
+        {
+            t[i]=zmien;
+        }
+    }
+}
+void zmianaN(int t[], int rozm, int zmien)
+{
+    for(int i=0; i<rozm; i++)
+    {
+        if(t[i]%2)
+        {
+            t[i]=zmien;
+        }
+    }
+}
