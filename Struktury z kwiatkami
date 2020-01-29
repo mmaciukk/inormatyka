@@ -1,0 +1,93 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdlib.h>
+#include <cmath>
+#include <algorithm>
+#define SIZE 150
+
+using namespace std;
+
+int main()
+{
+    struct kwiat//struktura przechowuje kilka zmiennych
+    {
+        float dana1;//deklarujemy typy i nazwy zmiennych w strukturze (kwiatek ma 4 parametry)
+        float dana2;
+        float dana3;
+        float dana4;
+        string dana5;//tutaj przechowujemy nazwe kwiatka
+    };
+    kwiat dana[SIZE/2];//deklarujemy tablice przechowujaca struktury
+    kwiat szukana[SIZE/2];
+    float roznice[SIZE/2];//tablica przechowujaca roznice w poszczegolnych parametrach
+    int wyniki[SIZE/2];//tablica przchowujaca logiczna wartosc ( 1 lub 0 ) zgodnosci z gatunkiem
+    fstream plik;
+    string tmp;
+    plik.open("kwiatki.txt", ios::in);
+    if(plik.good())
+    {
+        int i=0;
+        while(!plik.eof())
+        {
+            //tutaj sa wpisywane dane do tablicy struktur
+            getline(plik, tmp, ',');
+            dana[i].dana1=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp, ',');
+            dana[i].dana2=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp, ',');
+            dana[i].dana3=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp, ',');
+            dana[i].dana4=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp);
+            dana[i].dana5=tmp;
+
+            getline(plik, tmp, ',');
+            szukana[i].dana1=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp, ',');
+            szukana[i].dana2=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp, ',');
+            szukana[i].dana3=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp, ',');
+            szukana[i].dana4=strtof(tmp.c_str(), NULL);
+            getline(plik, tmp);
+            szukana[i].dana5=tmp;
+
+            i++;
+        }
+    }
+    else
+    {
+        cout<<"Plik nie istnieje!"<<endl;
+    }
+    for(int i=0; i<SIZE/2; i++)
+    {
+        for(int j=0; j<SIZE/2; j++)
+        {
+            //tutaj liczymy roznice pomiedzy parametrem badanego kwiatka a kwiatkami w tablicy z danymi
+            roznice[j]=abs(dana[j].dana1-szukana[i].dana1)+
+                       abs(dana[j].dana2-szukana[i].dana2)+
+                       abs(dana[j].dana3-szukana[i].dana3)+
+                       abs(dana[j].dana3-szukana[i].dana3);
+        }
+        int dist = distance(roznice, min_element(roznice, roznice+(SIZE/2)));//to oblicza najmniejsza roznice pomiedzy kwiatkami
+
+        if(dana[dist].dana5==szukana[i].dana5)//sprawdzanie czy dopasowana nazwa sie zgadza
+        {
+            wyniki[i]=1;//jesli kwiatek sie zgadza to przyznajemy 1
+        }
+        else
+        {
+            wyniki[i]=0;//w przeciwnym razie 0
+        }
+        cout<<wyniki[i]<<" ";
+    }
+    int suma=0;
+    for(int i=0; i<SIZE/2; i++)
+    {
+        suma+=wyniki[i];
+    }
+    cout<<"Skutecznosc algorytmu wynosi: "<<1.0*suma/75<<endl;
+
+    return 0;
+}
