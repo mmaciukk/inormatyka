@@ -1,0 +1,111 @@
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+int main()
+{
+    struct dana
+    {
+        int numer;
+        int dzien;
+        int miesiac;
+        int rok;
+        int L1;
+        int L2;
+        int L3;
+        int L4;
+        int L5;
+        int L6;
+    };
+    dana wynik;
+    vector<dana> baza;
+    fstream plik;
+    string temp;
+    int tab[50]= {0};
+    plik.open("lotto.csv", ios::in);
+    if(plik.good())
+    {
+        getline(plik, temp);
+        while(!plik.eof())
+        {
+            getline(plik, temp, ';');
+            wynik.numer=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.dzien=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.miesiac=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.rok=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.L1=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.L2=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.L3=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.L4=strtod(temp.c_str(), nullptr);
+            getline(plik, temp, ';');
+            wynik.L5=strtod(temp.c_str(), nullptr);
+            getline(plik, temp);
+            wynik.L6=strtod(temp.c_str(), nullptr);
+            baza.push_back(wynik);
+        }
+    }
+    else
+        cout<<"Plik nie istnieje!"<<endl;
+    //cout<<baza[100].numer<<" "<<baza[100].dzien<<" "<<baza[100].miesiac<<" "<<baza[100].rok<<endl;
+    for(int i=0; i<baza.size(); i++)
+    {
+        tab[baza[i].L1]++;
+        tab[baza[i].L2]++;
+        tab[baza[i].L3]++;
+        tab[baza[i].L4]++;
+        tab[baza[i].L5]++;
+        tab[baza[i].L6]++;
+    }
+    for(int i=1; i<50; i++)
+    {
+        cout<<i<<"-->"<<tab[i]<<endl;
+    }
+    int liczba=tab[0];
+    int element=0;
+    for(int i=0; i<50; i++)
+    {
+        if(tab[i]>liczba)
+        {
+            liczba=tab[i];
+            element=i;
+        }
+    }
+    int liczba2=tab[1];
+    int element2=0;
+    for(int i=1; i<50; i++)
+    {
+        if(tab[i]<liczba2)
+        {
+            liczba2=tab[i];
+            element2=i;
+        }
+    }
+    cout<<"Numer "<<element<<" wpadl najwiecej razy: "<<liczba<<endl;
+    cout<<"Numer "<<element2<<" wpadl najmniej razy: "<<liczba2<<endl;
+    map<int, int> mapa;
+    for(int i=1; i<50; i++)
+    {
+        mapa[i]=tab[i];
+    }
+    for(int i=1; i<50; i++)
+    {
+        cout<<mapa[i]<<endl;
+    }
+
+
+    plik.close();
+    //multimape ogarnac tuttaj
+
+    return 0;
+}
